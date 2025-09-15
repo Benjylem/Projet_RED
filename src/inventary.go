@@ -6,31 +6,31 @@ import (
 	"strings"
 )
 
-func AddINVENTAIRE(c *Charactere, item string) {
+func AddInventory(c *Character, item string) {
 	item = strings.TrimSpace(item)
-	c.INVENTAIRE = append(c.INVENTAIRE, item)
+	c.Inventory = append(c.Inventory, item)
 }
 
-func RemoveINVENTAIRE(c *Charactere, index int) {
-	if index >= 0 && index < len(c.INVENTAIRE) {
-		c.INVENTAIRE = append(c.INVENTAIRE[:index], c.INVENTAIRE[index+1:]...)
+func RemoveInventory(c *Character, index int) {
+	if index >= 0 && index < len(c.Inventory) {
+		c.Inventory = append(c.Inventory[:index], c.Inventory[index+1:]...)
 	}
 }
 
-func ShowInventaire(c *Charactere) {
-	if len(c.INVENTAIRE) == 0 {
-		fmt.Println("Inventaire vide.")
+func ShowInventory(c *Character) {
+	if len(c.Inventory) == 0 {
+		fmt.Println("Inventory vide.")
 	} else {
-		for i, item := range c.INVENTAIRE {
+		for i, item := range c.Inventory {
 			fmt.Printf("[%d] %q\n", i+1, item)
 		}
 	}
 }
 
-func AccessINVENTAIRE(c *Charactere, reader *bufio.Reader) {
+func AccessInventory(c *Character, reader *bufio.Reader) {
 	for {
-		fmt.Println("\n=== INVENTAIRE ===")
-		ShowInventaire(c)
+		fmt.Println("\n=== Inventory ===")
+		ShowInventory(c)
 		fmt.Println("[P] Utiliser une potion")
 		fmt.Println("[R] Retour")
 		fmt.Print("Choix : ")
@@ -48,7 +48,7 @@ func AccessINVENTAIRE(c *Charactere, reader *bufio.Reader) {
 	}
 }
 
-func AccesMerchant(c *Charactere, reader *bufio.Reader) {
+func AccesMerchant(c *Character, reader *bufio.Reader) {
 	for {
 		fmt.Println("\n=== Bienvenu à la CAF ===")
 		fmt.Println("[1] Potion de vie (gratuit)")
@@ -60,7 +60,7 @@ func AccesMerchant(c *Charactere, reader *bufio.Reader) {
 
 		switch input {
 		case "1":
-			AddINVENTAIRE(c, "Potion")
+			AddInventory(c, "Potion")
 			fmt.Println("Vous avez reçu une potion de vie")
 		case "r":
 			return

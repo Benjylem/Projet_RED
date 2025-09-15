@@ -1,17 +1,19 @@
 package code
 
 import (
+	"bufio"
+	// "code/src"
 	"fmt"
 	"os"
-	"bufio"
 	"strings"
 )
 
-func Menu(c *Charactere) {
+func Menu(c *Character) {
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
 		fmt.Print("\033[H\033[2J")
+		CharacterCreation()
 
 		fmt.Println("======================================")
 		fmt.Println("     Bienvenue à Pôle Emploi Quest   ")
@@ -30,9 +32,9 @@ func Menu(c *Charactere) {
 
 		switch input {
 		case "1":
-			DisplayInfo(c)
+			DisplayInfo(*c)
 		case "2":
-			AccessINVENTAIRE(c, reader)
+			AccessInventory(c, reader)
 		case "3":
 			//launchMission()
 		case "4":

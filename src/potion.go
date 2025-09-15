@@ -5,9 +5,9 @@ import (
 	"strings"
 )
 
-func TakePot(c *Charactere){
+func TakePot(c *Character){
 	index := -1
-	for i, item := range c.INVENTAIRE {
+	for i, item := range c.Inventory {
 		if strings.TrimSpace(strings.ToLower(item)) == "potion" {
 		index = i
 		break
@@ -17,10 +17,10 @@ func TakePot(c *Charactere){
     	    fmt.Println("❌ Vous n'avez plus de potion.")
         	return
     }
-	RemoveINVENTAIRE(c, index)
-	c.CurrentHP += 40
-	if c.CurrentHP > c.MaxHP {
-        c.CurrentHP = c.MaxHP
+	RemoveInventory(c, index)
+	c.CurrentCompDay += 40
+	if c.CurrentCompDay > c.MaxCompDay {
+        c.CurrentCompDay = c.MaxCompDay
     }
-	fmt.Printf("Vous avez bu une potion ! Pv actuelle %d/%d\n", c.CurrentHP, c.MaxHP)
+	fmt.Printf("Vous avez bu une potion ! Pv actuelle %d/%d\n", c.CurrentCompDay, c.MaxCompDay)
 }
