@@ -29,11 +29,15 @@ func ShowInventory(c *Character) {
 
 func AccessInventory(c *Character, reader *bufio.Reader) {
 	for {
-		fmt.Println("\n=== Inventory ===")
+		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
+		fmt.Println("\033[1;33m           🎒 INVENTAIRE 🎒           \033[0m")
+		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		ShowInventory(c)
-		fmt.Println("[P] Utiliser une potion")
-		fmt.Println("[R] Retour")
-		fmt.Print("Choix : ")
+		fmt.Println("\n\033[32m[P]\033[0m 💊 Utiliser une potion de vie")
+		fmt.Println("\033[35m[O]\033[0m ☠️  Utiliser une potion de poison")
+		fmt.Println("\033[31m[R]\033[0m ↩️  Retour")
+		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
+		fmt.Print("\033[1;34mVotre choix : \033[0m")
 
 		input, _ := reader.ReadString('\n')
 		input = strings.TrimSpace(strings.ToLower(input))
@@ -43,17 +47,21 @@ func AccessInventory(c *Character, reader *bufio.Reader) {
 		} else if input == "r" {
 			return
 		} else {
-			fmt.Println("Choix invalide.")
+			fmt.Println("\033[31m❌ Choix invalide. Réessayez !\033[0m")
 		}
 	}
 }
 
 func AccesMerchant(c *Character, reader *bufio.Reader) {
 	for {
-		fmt.Println("\n=== Bienvenu à la CAF ===")
-		fmt.Println("[1] Potion de vie (gratuit)")
-		fmt.Println("[R] Retour")
-		fmt.Println("Choice : ")
+		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
+		fmt.Println("\033[1;33m         🏪 BIENVENUE À LA CAF 🏪        \033[0m")
+		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
+		fmt.Println("\033[32m[1]\033[0m 💊 Potion de vie (gratuit)")
+		fmt.Println("\033[35m[2]\033[0m ☠️  Potion de poison (gratuit)")
+		fmt.Println("\033[31m[R]\033[0m ↩️  Retour")
+		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
+		fmt.Print("\033[1;34mVotre choix : \033[0m")
 
 		input, _ := reader.ReadString('\n')
 		input = strings.TrimSpace(strings.ToLower(input))
@@ -61,11 +69,11 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		switch input {
 		case "1":
 			AddInventory(c, "Potion")
-			fmt.Println("Vous avez reçu une potion de vie")
+			fmt.Println("\033[32m✅ Vous avez reçu une potion de vie !\033[0m")
 		case "r":
 			return
 		default:
-			fmt.Println("Wrong choice")
+			fmt.Println("\033[31m❌ Choix invalide. Réessayez !\033[0m")
 		}
 	}
 }
