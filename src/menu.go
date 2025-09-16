@@ -13,19 +13,21 @@ func Menu(c *Character) {
 
 	for {
 		fmt.Print("\033[H\033[2J")
-		CharacterCreation()
+		// CharacterCreation()
 
-		fmt.Println("======================================")
-		fmt.Println("     Bienvenue à Pôle Emploi Quest   ")
-		fmt.Println("======================================")
-		fmt.Println("[1] Afficher les information du personnage")
-		fmt.Println("[2] Accéder à l'inventaire")
-		fmt.Println("[3] Chercher une mission")
-		fmt.Println("[4] Consulter les jour d'indemnisation")
-		fmt.Println("[5] Aller à la CAF (Merchand)")
-		fmt.Println("[6] Quitter le jeu")
-		fmt.Println("======================================")
-		fmt.Print("Entrez votre choix : ")
+fmt.Println("\033[36m══════════════════════════════════════\033[0m")
+fmt.Println("\033[1;33m        🏢 Bienvenue à Pôle Emploi Quest 🏢        \033[0m")
+fmt.Println("\033[36m══════════════════════════════════════\033[0m")
+
+fmt.Println("\033[32m[1]\033[0m 📜 Afficher les informations du personnage")
+fmt.Println("\033[32m[2]\033[0m 🎒 Accéder à l'inventaire")
+fmt.Println("\033[32m[3]\033[0m ⚔️  Chercher une mission")
+fmt.Println("\033[32m[4]\033[0m 📅 Consulter les jours d'indemnisation")
+fmt.Println("\033[32m[5]\033[0m 🏪 Aller à la CAF (Marchand)")
+fmt.Println("\033[31m[6] ❌ Quitter le jeu\033[0m")
+fmt.Println("\033[36m══════════════════════════════════════\033[0m")
+
+fmt.Print("\033[1;34mEntrez votre choix : \033[0m")
 
 		input, _ := reader.ReadString('\n')
 		input = strings.TrimSpace(input)
