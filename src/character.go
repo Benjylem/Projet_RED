@@ -35,7 +35,7 @@ func InitCharacter(name, class string) Character {
             Class:     class,
             Level:     1,
             MaxCompDay:     350,
-            CurrentCompDay: 175,
+            CurrentCompDay: 10,
 			Experience: 0,
             Inventory: []string{"CV", "Lettre de motivation"},
 			Equipment: Equipment{
