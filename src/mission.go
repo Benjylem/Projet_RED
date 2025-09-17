@@ -1,4 +1,4 @@
-package main
+package code
 
 import (
     "fmt"
@@ -6,7 +6,6 @@ import (
     "time"
 )
 
-// Mission représente une mission possible
 type Mission struct {
     Nom         string
     Exp         int
@@ -14,14 +13,13 @@ type Mission struct {
     EchecEffet  string
 }
 
-// Probabilités de réussite selon la difficulté
 var probaReussite = map[string]int{
     "Facile":    75,
     "Moyenne":   45,
     "Difficile": 15,
 }
 
-func main() {
+func LaunchMission() {
     rand.Seed(time.Now().UnixNano())
 
     missions := []Mission{
@@ -37,32 +35,43 @@ func main() {
         {"Coaching entretien individuel", 100, "Difficile", "-10 jours d’indemnisation"},
     }
 
-    fmt.Println("=== Menu des Missions ===")
+    fmt.Println("\033[36m═════════════════════════════════════\033[0m")
+    fmt.Println("\t\033[1m📋 MENU DES MISSIONS\033[0m")
+    fmt.Println("\033[36m═════════════════════════════════════\033[0m")
     for i, m := range missions {
-        fmt.Printf("%d. %s (Difficulté: %s)\n", i+1, m.Nom, m.Difficulte)
+        fmt.Printf("%d. 🎯 \033[33m%s\033[0m (Difficulté: \033[35m%s\033[0m)\n", i+1, m.Nom, m.Difficulte)
     }
 
     var choix int
-    fmt.Print("\nChoisissez une mission (1-10) : ")
+    fmt.Print("\n➡️  Choisissez une mission (1-10) : ")
     fmt.Scanln(&choix)
 
     if choix < 1 || choix > len(missions) {
-        fmt.Println("Choix invalide.")
+        fmt.Println("❌ Choix invalide.")
         return
     }
 
     mission := missions[choix-1]
-    fmt.Printf("\nVous avez choisi : %s\n", mission.Nom)
+
+    // Styled mission start
+    fmt.Println("\n\033[36m══════════════════════════════════════════════\033[0m")
+    fmt.Printf("🎯 Mission sélectionnée : \033[33m%s\033[0m (Difficulté : \033[35m%s\033[0m)\n", mission.Nom, mission.Difficulte)
+    fmt.Println("⏳ En cours... Veuillez patienter...")
+    fmt.Println("\033[36m══════════════════════════════════════════════\033[0m")
+    time.Sleep(3 * time.Second)
 
     chance := probaReussite[mission.Difficulte]
     tirage := rand.Intn(100) + 1
 
-    fmt.Printf("Calcul de la réussite... (Probabilité : %d%%)\n\n", chance)
-    time.Sleep(3 * time.Second)
+	fmt.Printf("\033[36m══════════════════════════════════════════════\033[0m\n")
+
+    fmt.Printf("🎲 Probabilité de réussite : \033[32m%d%%\033[0m", chance)
 
     if tirage <= chance {
-        fmt.Println(":white_check_mark: Mission réussie ! Vous gagnez", mission.Exp, "EXP.")
+        fmt.Println("✅ \033[32mMission réussie !\033[0m\n🎉 Vous gagnez", mission.Exp, "EXP.")
     } else {
-        fmt.Println(":x: Échec de la mission. Effet négatif :", mission.EchecEffet)
+        fmt.Println("❌ \033[31mÉchec de la mission.\033[0m\n💀 Effet négatif :", mission.EchecEffet)
     }
+
+    fmt.Println("\033[36m══════════════════════════════════════════════\033[0m")
 }
