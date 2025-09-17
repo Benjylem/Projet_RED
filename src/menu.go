@@ -2,7 +2,6 @@ package code
 
 import (
 	"bufio"
-	// "code/src"
 	"fmt"
 	"os"
 	"strings"
@@ -40,7 +39,7 @@ fmt.Print("\033[1;34mEntrez votre choix : \033[0m")
 		case "2":
 			AccessInventory(c, reader)
 		case "3":
-			LaunchMission()
+			LaunchMission(c)
 		case "4":
 			//checkIndemnisation()
 		case "5":

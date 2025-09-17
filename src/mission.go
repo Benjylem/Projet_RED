@@ -1,7 +1,6 @@
 package code
-
 import (
-    "fmt"
+	"fmt"
     "math/rand"
     "time"
 )
@@ -13,14 +12,12 @@ type Mission struct {
     EchecEffet  string
 }
 
-var probaReussite = map[string]int{
-    "Facile":    75,
-    "Moyenne":   45,
-    "Difficile": 15,
-}
-
-func LaunchMission() {
-    rand.Seed(time.Now().UnixNano())
+func LaunchMission(c *Character) {
+    probaReussite := map[string]int{
+        "Facile":    75,
+        "Moyenne":   45,
+        "Difficile": 15,
+    }
 
     missions := []Mission{
         {"Remplir son CV", 100, "Facile", "-10 jours d’indemnisation"},
@@ -53,7 +50,6 @@ func LaunchMission() {
 
     mission := missions[choix-1]
 
-    // Styled mission start
     fmt.Println("\n\033[36m══════════════════════════════════════════════\033[0m")
     fmt.Printf("🎯 Mission sélectionnée : \033[33m%s\033[0m (Difficulté : \033[35m%s\033[0m)\n", mission.Nom, mission.Difficulte)
     fmt.Println("⏳ En cours... Veuillez patienter...")
@@ -63,14 +59,21 @@ func LaunchMission() {
     chance := probaReussite[mission.Difficulte]
     tirage := rand.Intn(100) + 1
 
-	fmt.Printf("\033[36m══════════════════════════════════════════════\033[0m\n")
-
-    fmt.Printf("🎲 Probabilité de réussite : \033[32m%d%%\033[0m", chance)
+    fmt.Printf("\033[36m══════════════════════════════════════════════\033[0m\n")
+    fmt.Printf("🎲 Probabilité de réussite : \033[32m%d%%\033[0m\n", chance)
 
     if tirage <= chance {
-        fmt.Println("✅ \033[32mMission réussie !\033[0m\n🎉 Vous gagnez", mission.Exp, "EXP.")
+        fmt.Println("✅ \033[32mMission réussie !\033[0m")
+        fmt.Printf("🎉 Vous gagnez %d XP.\n", mission.Exp)
+        c.Experience += mission.Exp
     } else {
-        fmt.Println("❌ \033[31mÉchec de la mission.\033[0m\n💀 Effet négatif :", mission.EchecEffet)
+        fmt.Println("❌ \033[31mÉchec de la mission.\033[0m")
+        fmt.Println("💀 Effet négatif :", mission.EchecEffet)
+        c.CurrentCompDay -= 10
+        if c.CurrentCompDay < 0 {
+            c.CurrentCompDay = 0
+        }
+        IsDead(c)
     }
 
     fmt.Println("\033[36m══════════════════════════════════════════════\033[0m")
