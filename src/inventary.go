@@ -6,9 +6,18 @@ import (
 	"strings"
 )
 
+func CheckMaxItem(c *Character) bool {
+	return len(c.Inventory) < 10
+}
+
 func AddInventory(c *Character, item string) {
 	item = strings.TrimSpace(item)
-	c.Inventory = append(c.Inventory, item)
+	if CheckMaxItem(c) {
+		c.Inventory = append(c.Inventory, item)
+		fmt.Printf("\033[32m✅ %q ajouté à votre inventaire !\033[0m\n", item)
+	} else {
+		fmt.Println("\033[31m❌ Inventaire plein ! Vous ne pouvez pas avoir plus de 10 items.\033[0m")
+	}
 }
 
 func RemoveInventory(c *Character, index int) {
@@ -43,7 +52,9 @@ func AccessInventory(c *Character, reader *bufio.Reader) {
 		input = strings.TrimSpace(strings.ToLower(input))
 
 		if input == "p" {
-			TakePot(c)
+			GoodPot(c)
+		} else if input == "o" {
+			PoisonPot(c)
 		} else if input == "r" {
 			return
 		} else {
@@ -57,8 +68,10 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		fmt.Println("\033[1;33m         🏪 BIENVENUE À LA CAF 🏪        \033[0m")
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
-		fmt.Println("\033[32m[1]\033[0m 💊 Potion de vie (gratuit)")
-		fmt.Println("\033[35m[2]\033[0m ☠️  Potion de poison (gratuit)")
+		fmt.Printf("✨ XP Disponible : %d\n", c.Experience)
+		fmt.Println("\033[32m[1]\033[0m 💊 Potion de vie (coût : 30 XP)")
+		fmt.Println("\033[35m[2]\033[0m ☠️ Potion de poison (bonus : 20 XP)")
+		fmt.Println("\033[35m[?]\033[0m    Forgeron")
 		fmt.Println("\033[31m[R]\033[0m ↩️  Retour")
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		fmt.Print("\033[1;34mVotre choix : \033[0m")
@@ -68,8 +81,21 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 
 		switch input {
 		case "1":
-			AddInventory(c, "Potion")
-			fmt.Println("\033[32m✅ Vous avez reçu une potion de vie !\033[0m")
+			if c.Experience >= 30 {
+				c.Experience -= 30
+				AddInventory(c, "Potion")
+				fmt.Println("\033[32m✅ Vous avez reçu une potion de vie !\033[0m")
+			} else {
+				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
+			}
+		case "2":
+			if c.Experience >= 50 {
+				c.Experience += 20
+				AddInventory(c, "Potion de poison")
+				fmt.Println("\033[32m✅ Vous avez reçu une potion de poison !\033[0m")
+			} else {
+				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
+			}
 		case "r":
 			return
 		default:
