@@ -42,8 +42,8 @@ func AccessInventory(c *Character, reader *bufio.Reader) {
 		fmt.Println("\033[1;33m           🎒 INVENTAIRE 🎒           \033[0m")
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		ShowInventory(c)
-		fmt.Println("\n\033[32m[P]\033[0m 💊 Utiliser une potion de vie")
-		fmt.Println("\033[35m[O]\033[0m ☠️  Utiliser une potion de poison")
+		fmt.Println("\n\033[32m[P]\033[0m 💊 Oasis")
+		fmt.Println("\033[35m[O]\033[0m ☠️  Café réchauffé")
 		fmt.Println("\033[31m[R]\033[0m ↩️  Retour")
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		fmt.Print("\033[1;34mVotre choix : \033[0m")
@@ -69,9 +69,8 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		fmt.Println("\033[1;33m         🏪 BIENVENUE À LA CAF 🏪        \033[0m")
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		fmt.Printf("✨ XP Disponible : %d\n", c.Experience)
-		fmt.Println("\033[32m[1]\033[0m 💊 Potion de vie (coût : 30 XP)")
-		fmt.Println("\033[35m[2]\033[0m ☠️ Potion de poison (bonus : 20 XP)")
-		fmt.Println("\033[35m[?]\033[0m    Forgeron")
+		fmt.Println("\033[32m[1]\033[0m 💊 Oasis (coût : 30 XP)")
+		fmt.Println("\033[35m[2]\033[0m ☠️ Café réchauffé (bonus : 20 XP)")
 		fmt.Println("\033[31m[R]\033[0m ↩️  Retour")
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		fmt.Print("\033[1;34mVotre choix : \033[0m")
@@ -84,7 +83,7 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 			if c.Experience >= 30 {
 				c.Experience -= 30
 				AddInventory(c, "Potion")
-				fmt.Println("\033[32m✅ Vous avez reçu une potion de vie !\033[0m")
+				fmt.Println("\033[32m✅ Vous avez bu un oasis !\033[0m")
 			} else {
 				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
 			}
@@ -92,7 +91,7 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 			if c.Experience >= 50 {
 				c.Experience += 20
 				AddInventory(c, "Potion de poison")
-				fmt.Println("\033[32m✅ Vous avez reçu une potion de poison !\033[0m")
+				fmt.Println("\033[32m✅ Vous avez bu un café réchauffé !\033[0m")
 			} else {
 				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
 			}
