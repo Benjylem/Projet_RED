@@ -18,6 +18,7 @@ type Character struct {
     Name      string
     Class     string
     Level     int
+    Skill     []string
     MaxCompDay     int
     CurrentCompDay int
 	Experience int
@@ -34,6 +35,7 @@ func InitCharacter(name, class string) Character {
             Name:      name,
             Class:     class,
             Level:     0,
+            Skill:     []string{"colère"},
             MaxCompDay:     350,
             CurrentCompDay: 10,
 			Experience: 0,
@@ -49,6 +51,7 @@ func InitCharacter(name, class string) Character {
             Name:      name,
             Class:     class,
             Level:     0,
+            Skill:     []string{"colère"},
             MaxCompDay:     300,
             CurrentCompDay: 150,
 			Experience: 0,
@@ -64,6 +67,7 @@ func InitCharacter(name, class string) Character {
             Name:      name,
             Class:     class,
             Level:     0,
+            Skill:     []string{"colère"},
             MaxCompDay:     400,
             CurrentCompDay: 200,
 			Experience: 0,
@@ -137,6 +141,7 @@ func DisplayInfo(c Character) {
     fmt.Printf("\033[32mNom :\033[0m %s\n", c.Name)
     fmt.Printf("\033[32mClasse :\033[0m %s\n", c.Class)
     fmt.Printf("\033[32mNiveau :\033[0m %d\n", c.Level)
+    fmt.Printf("\033[32mSkill :\033[0m %s\n", c.Skill)
     fmt.Printf("\033[32mCompensation Day :\033[0m %d / %d\n", c.CurrentCompDay, c.MaxCompDay)
     fmt.Printf("\033[32mExpérience :\033[0m %d\n", c.Experience)
 
