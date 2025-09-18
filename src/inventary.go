@@ -1,8 +1,8 @@
 package code
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"strings"
 )
 
@@ -28,7 +28,7 @@ func RemoveInventory(c *Character, index int) {
 
 func ShowInventory(c *Character) {
 	if len(c.Inventory) == 0 {
-		fmt.Println("Inventory vide.")
+		fmt.Println("Inventaire vide.")
 	} else {
 		for i, item := range c.Inventory {
 			fmt.Printf("[%d] %q\n", i+1, item)
@@ -44,6 +44,7 @@ func AccessInventory(c *Character, reader *bufio.Reader) {
 		ShowInventory(c)
 		fmt.Println("\n\033[32m[P]\033[0m 💊 Oasis")
 		fmt.Println("\033[35m[O]\033[0m ☠️  Café réchauffé")
+		fmt.Println("\033[35m[E]\033[0m 🛡️  Équiper un habit")
 		fmt.Println("\033[31m[R]\033[0m ↩️  Retour")
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		fmt.Print("\033[1;34mVotre choix : \033[0m")
@@ -55,6 +56,8 @@ func AccessInventory(c *Character, reader *bufio.Reader) {
 			GoodPot(c)
 		} else if input == "o" {
 			PoisonPot(c)
+		} else if input == "e" {
+			EquipMenu(c, reader)
 		} else if input == "r" {
 			return
 		} else {
@@ -82,7 +85,7 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		case "1":
 			if c.Experience >= 30 {
 				c.Experience -= 30
-				AddInventory(c, "Potion")
+				AddInventory(c, "Oasis")
 				fmt.Println("\033[32m✅ Vous avez bu un oasis !\033[0m")
 			} else {
 				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
@@ -90,7 +93,7 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		case "2":
 			if c.Experience >= 50 {
 				c.Experience += 20
-				AddInventory(c, "Potion de poison")
+				AddInventory(c, "Café réchaufé")
 				fmt.Println("\033[32m✅ Vous avez bu un café réchauffé !\033[0m")
 			} else {
 				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
