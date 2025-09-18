@@ -8,9 +8,9 @@ import (
 )
 
 var recipes = map[string][]string{
-    "Chapeau de l'aventurier": {"Plume de Corbeau", "Cuir de Sanglier"},
-    "Tunique de l'aventurier": {"Fourrure de Loup", "Fourrure de Loup", "Peau de Troll"},
-    "Bottes de l'aventurier":  {"Fourrure de Loup", "Cuir de Sanglier"},
+    "Bob": {"Plume de Corbeau", "Cuir de Sanglier"},
+    "Marcel": {"Fourrure de Loup", "Fourrure de Loup", "Peau de Troll"},
+    "Claquette chaussette":  {"Fourrure de Loup", "Cuir de Sanglier"},
 }
 
 func ForgeMenu(c *Character) {
@@ -19,9 +19,9 @@ func ForgeMenu(c *Character) {
         fmt.Println("\033[1;33m 	🛠️ FORGERON\033[0m – Choisissez un équipement à fabriquer :")
         fmt.Println("\033[36m══════════════════════════════════════\033[0m")
         fmt.Printf("Il vous reste %d XP", c.CurrentCompDay)
-        fmt.Println("\n[1] 👒 Chapeau de l'aventurier (coût : 5 XP)")
-        fmt.Println("[2] 👕 Tunique de l'aventurier (coût : 5 XP)")
-        fmt.Println("[3] 👟 Bottes de l'aventurier (coût : 5 XP)")
+        fmt.Println("\n[1] 👒 Bob (coût : 5 XP)")
+        fmt.Println("[2] 👕 Marcel (coût : 5 XP)")
+        fmt.Println("[3] 👟 Claquette chaussette (coût : 5 XP)")
         fmt.Println("[R] ↩️ Retour")
         fmt.Print("Votre choix : ")
 
@@ -30,11 +30,11 @@ func ForgeMenu(c *Character) {
 
         switch choix {
         case "1":
-            craftEquipment(c, "Chapeau de l'aventurier")
+            craftEquipment(c, "Bob")
         case "2":
-            craftEquipment(c, "Tunique de l'aventurier")
+            craftEquipment(c, "Marcel")
         case "3":
-            craftEquipment(c, "Bottes de l'aventurier")
+            craftEquipment(c, "Claquette chaussette")
         case "R", "r":
             return
         default:
@@ -85,9 +85,9 @@ func EquipMenu(c *Character, reader *bufio.Reader) {
     var equipables []string
     for _, item := range c.Inventory {
         normalized := strings.ToLower(strings.TrimSpace(item))
-        if normalized == "chapeau de l'aventurier" ||
-           normalized == "tunique de l'aventurier" ||
-           normalized == "bottes de l'aventurier" {
+        if normalized == "Bob" ||
+           normalized == "Marcel" ||
+           normalized == "Claquette chaussette" {
             equipables = append(equipables, item)
         }
     }
@@ -116,21 +116,21 @@ func EquipMenu(c *Character, reader *bufio.Reader) {
 
 func EquipItem(c *Character, item string) {
     switch item {
-    case "Chapeau de l'aventurier":
+    case "Bob":
         if c.Equipment.EquipmentHead != "" {
             fmt.Printf("🗑️ %s a été détruit.\n", c.Equipment.EquipmentHead)
         }
         c.Equipment.EquipmentHead = item
         c.MaxCompDay += 10
 
-    case "Tunique de l'aventurier":
+    case "Marcel":
         if c.Equipment.ChestEquipment != "" {
             fmt.Printf("🗑️ %s a été détruit.\n", c.Equipment.ChestEquipment)
         }
         c.Equipment.ChestEquipment = item
         c.MaxCompDay += 25
 
-    case "Bottes de l'aventurier":
+    case "Claquette chaussette":
         if c.Equipment.FootEquipment != "" {
             fmt.Printf("🗑️ %s a été détruit.\n", c.Equipment.FootEquipment)
         }
