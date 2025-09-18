@@ -23,14 +23,14 @@ func LaunchMission(c *Character) {
     rand.Seed(time.Now().UnixNano())
 
     missions := []Mission{
-    {"Remplir son CV", 100, "Facile", "-10 jours d’indemnisation", "Plume de Corbeau"},
-    {"Aller à un entretien simulé", 100, "Moyenne", "-10 jours d’indemnisation", "Fourrure de Loup"},
-    {"Rechercher des offres sur internet", 100, "Facile", "-10 jours d’indemnisation", "Cuir de Sanglier"},
-    {"Atelier “Préparer lettre de motivation”", 100, "Moyenne", "-10 jours d’indemnisation", "Fourrure de Loup"},
-    {"Cours de formation courte", 100, "Moyenne", "-10 jours d’indemnisation", "Peau de Troll"},
-    {"Simulation d’entretien téléphonique", 100, "Moyenne", "-10 jours d’indemnisation", "Plume de Corbeau"},
-    {"Accompagner un autre migrant", 100, "Moyenne", "-10 jours d’indemnisation", "Cuir de Sanglier"},
-    {"Remplir un formulaire administratif", 100, "Facile", "-10 jours d’indemnisation", "Plume de Corbeau"},
+    {"Remplir son CV", 1, "Facile", "-10 jours d’indemnisation", "Plume de Corbeau"},
+    {"Aller à un entretien simulé", 20, "Moyenne", "-10 jours d’indemnisation", "Fourrure de Loup"},
+    {"Rechercher des offres sur internet", 25, "Facile", "-10 jours d’indemnisation", "Cuir de Sanglier"},
+    {"Atelier “Préparer lettre de motivation”", 70, "Moyenne", "-10 jours d’indemnisation", "Fourrure de Loup"},
+    {"Cours de formation courte", 70, "Moyenne", "-10 jours d’indemnisation", "Peau de Troll"},
+    {"Simulation d’entretien téléphonique", 70, "Moyenne", "-10 jours d’indemnisation", "Plume de Corbeau"},
+    {"Accompagner un autre migrant", 80, "Moyenne", "-10 jours d’indemnisation", "Cuir de Sanglier"},
+    {"Remplir un formulaire administratif", 2, "Facile", "-10 jours d’indemnisation", "Plume de Corbeau"},
     {"Participer à un atelier numérique", 100, "Moyenne", "-10 jours d’indemnisation", "Fourrure de Loup"},
     {"Coaching entretien individuel", 100, "Difficile", "-10 jours d’indemnisation", "Peau de Troll"},
 }
