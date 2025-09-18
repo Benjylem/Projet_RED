@@ -6,6 +6,5 @@ import (
 
 func main() {
     c1 := code.CharacterCreation()
-    // code.DisplayInfo(c1)
-    code.Menu(&c1) // Appel de la nouvelle fonction
+    code.Menu(&c1)
 }

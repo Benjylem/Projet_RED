@@ -37,7 +37,7 @@ func InitCharacter(name, class string) Character {
             MaxCompDay:     350,
             CurrentCompDay: 175,
 			Experience: 0,
-            Inventory: []string{"CV", "Lettre de motivation"},
+            Inventory: []string{},
 			Equipment: Equipment{
 				EquipmentHead: "beret",
 				ChestEquipment: "chemise",
@@ -52,7 +52,7 @@ func InitCharacter(name, class string) Character {
             MaxCompDay:     300,
             CurrentCompDay: 150,
 			Experience: 0,
-            Inventory: []string{"CV", "Lettre de motivation"},
+            Inventory: []string{},
 			Equipment: Equipment{
 				EquipmentHead: "casquette",
 				ChestEquipment: "sweat",
@@ -67,7 +67,7 @@ func InitCharacter(name, class string) Character {
             MaxCompDay:     400,
             CurrentCompDay: 200,
 			Experience: 0,
-            Inventory: []string{"CV", "Lettre de motivation"},
+            Inventory: []string{},
 			Equipment: Equipment{
 				EquipmentHead: "bob",
 				ChestEquipment: "marcel",
