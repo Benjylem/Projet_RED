@@ -13,7 +13,6 @@ type Mission struct {
     Loot        string
 }
 
-<<<<<<< HEAD
 var probaReussite = map[string]int{
     "Facile":    75,
     "Moyenne":   45,
@@ -22,14 +21,6 @@ var probaReussite = map[string]int{
 
 func LaunchMission(c *Character) {
     rand.Seed(time.Now().UnixNano())
-=======
-func LaunchMission(c *Character) {
-    probaReussite := map[string]int{
-        "Facile":    75,
-        "Moyenne":   45,
-        "Difficile": 15,
-    }
->>>>>>> a10d84175b9644ba1bcd0e95c0a98b1021c6f77a
 
     missions := []Mission{
     {"Remplir son CV", 100, "Facile", "-10 jours d’indemnisation", "Plume de Corbeau"},
