@@ -7,7 +7,7 @@ import (
 )
 
 func CheckMaxItem(c *Character) bool {
-	return len(c.Inventory) < 10
+	return len(c.Inventory) < 5
 }
 
 func AddInventory(c *Character, item string) {
@@ -16,10 +16,18 @@ func AddInventory(c *Character, item string) {
 		c.Inventory = append(c.Inventory, item)
 		fmt.Printf("\033[32m✅ %q ajouté à votre inventaire !\033[0m\n", item)
 	} else {
-		fmt.Println("\033[31m❌ Inventaire plein ! Vous ne pouvez pas avoir plus de 10 items.\033[0m")
+		fmt.Println("\033[31m❌ Inventaire plein ! Vous ne pouvez pas avoir plus de 5 items.\033[0m")
 	}
 }
 
+func AddInventoryUpgraded1(c *Character, item string) {
+	item = strings.TrimSpace(item)
+	for c.Inventory = append(c.Inventory, item)
+	return len(c.Inventory) < 8
+
+	if
+	
+}
 func RemoveInventory(c *Character, index int) {
 	if index >= 0 && index < len(c.Inventory) {
 		c.Inventory = append(c.Inventory[:index], c.Inventory[index+1:]...)
@@ -74,6 +82,7 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		fmt.Printf("✨ XP Disponible : %d\n", c.Experience)
 		fmt.Println("\033[32m[1]\033[0m 💊 Oasis (coût : 30 XP)")
 		fmt.Println("\033[35m[2]\033[0m ☠️ Café réchauffé (bonus : 20 XP)")
+		fmt.Println("\033[33m[4]\033[0m 👜 Plus grosse sacoche (coût : 50 XP)")
 		fmt.Println("\033[31m[R]\033[0m ↩️  Retour")
 		fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 		fmt.Print("\033[1;34mVotre choix : \033[0m")
@@ -98,6 +107,14 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 			} else {
 				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
 			}
+		case "4":
+			if c.Experience >= 50{
+				c.Experience -= 50
+				UpgradeInventorySlot(c, item)
+			fmt.Println("\033[32m✅ Votre inventaire à augmenté de taille !\033[0m")
+			} else {
+				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
+			}
 		case "r":
 			return
 		default:
@@ -105,3 +122,7 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		}
 	}
 }
+func UpgradeInventorySlot(c *Character, item string){
+	AddInventory()
+}
+
