@@ -33,9 +33,9 @@ func InitCharacter(name, class string) Character {
         return Character{
             Name:      name,
             Class:     class,
-            Level:     1,
+            Level:     0,
             MaxCompDay:     350,
-            CurrentCompDay: 175,
+            CurrentCompDay: 10,
 			Experience: 0,
             Inventory: []string{},
 			Equipment: Equipment{
@@ -48,7 +48,7 @@ func InitCharacter(name, class string) Character {
         return Character{
             Name:      name,
             Class:     class,
-            Level:     1,
+            Level:     0,
             MaxCompDay:     300,
             CurrentCompDay: 150,
 			Experience: 0,
@@ -63,7 +63,7 @@ func InitCharacter(name, class string) Character {
         return Character{
             Name:      name,
             Class:     class,
-            Level:     1,
+            Level:     0,
             MaxCompDay:     400,
             CurrentCompDay: 200,
 			Experience: 0,
@@ -79,7 +79,7 @@ func InitCharacter(name, class string) Character {
         return Character{
             Name:      name,
             Class:     "inconnu",
-            Level:     1,
+            Level:     0,
             MaxCompDay:     100,
             CurrentCompDay: 100,
 			Experience: 0,
@@ -125,13 +125,6 @@ func CharacterCreation() Character {
     }
 
     return InitCharacter(name, class)
-}
-
-// Fonction qui crée une barre de progression ASCII
-func ProgressBar(current, max, length int) string {
-    filled := (current * length) / max
-    empty := length - filled
-    return strings.Repeat("█", filled) + strings.Repeat("-", empty)
 }
 
 // Nouvelle fonction displayInfo
