@@ -18,6 +18,7 @@ fmt.Println("\033[36m═══════════════════�
 fmt.Println("\033[1;33m        🏢 Bienvenue à Pôle Emploi Quest 🏢        \033[0m")
 fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 
+fmt.Println("\033[32m[0]\033[0m 📜 Niveau")
 fmt.Println("\033[32m[1]\033[0m 📜 Afficher les informations du personnage")
 fmt.Println("\033[32m[2]\033[0m 🎒 Accéder à l'inventaire")
 fmt.Println("\033[32m[3]\033[0m ⚔️  Chercher une mission")
@@ -34,6 +35,8 @@ fmt.Print("\033[1;34mEntrez votre choix : \033[0m")
 		input = strings.TrimSpace(input)
 
 		switch input {
+		case "0":
+			Experience(c)
 		case "1":
 			DisplayInfo(*c)
 		case "2":
@@ -41,7 +44,7 @@ fmt.Print("\033[1;34mEntrez votre choix : \033[0m")
 		case "3":
 			LaunchMission(c)
 		case "4":
-			//checkIndemnisation()
+			CompDay(c)
 		case "5":
 			//épicerie, il manque à le créer
 		case "6":

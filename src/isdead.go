@@ -14,4 +14,3 @@ func IsDead(c *Character) bool {
     }
     return false
 }
-
