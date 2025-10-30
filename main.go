@@ -1,7 +1,7 @@
 package main
 
 import (
-	"code/src"
+	"ProjetRED/src"
 )
 
 func main() {
