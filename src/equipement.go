@@ -85,9 +85,9 @@ func EquipMenu(c *Character, reader *bufio.Reader) {
 	var equipables []string
 	for _, item := range c.Inventory {
 		normalized := strings.ToLower(strings.TrimSpace(item))
-		if normalized == "Bob" ||
-			normalized == "Marcel" ||
-			normalized == "Claquette chaussette" {
+		if normalized == "bob" ||
+			normalized == "marcel" ||
+			normalized == "claquette chaussette" {
 			equipables = append(equipables, item)
 		}
 	}
