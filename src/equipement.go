@@ -84,10 +84,10 @@ func removeItem(inv *[]string, item string) {
 func EquipMenu(c *Character, reader *bufio.Reader) {
 	var equipables []string
 	for _, item := range c.Inventory {
-		normalized := strings.ToLower(strings.TrimSpace(item))
-		if normalized == "bob" ||
-			normalized == "marcel" ||
-			normalized == "claquette chaussette" {
+		trimmed := strings.TrimSpace(item)
+		if trimmed == "Bob" ||
+			trimmed == "Marcel" ||
+			trimmed == "Claquette chaussette" {
 			equipables = append(equipables, item)
 		}
 	}
