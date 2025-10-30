@@ -21,11 +21,12 @@ fmt.Println("\033[32m[0]\033[0m 📜 Niveau")
 fmt.Println("\033[32m[1]\033[0m 📜 Afficher les informations du personnage")
 fmt.Println("\033[32m[2]\033[0m 🎒 Accéder à l'inventaire")
 fmt.Println("\033[32m[3]\033[0m ⚔️  Chercher une mission")
-fmt.Println("\033[32m[4]\033[0m 📅 Consulter les jours d'indemnisation")
-fmt.Println("\033[32m[5]\033[0m 🏪 Epicerie")
-fmt.Println("\033[32m[6]\033[0m 🏪 Aller à la CAF (Marchand)")
-fmt.Println("\033[35m[7] 🎉 Qui sont les artistes?\033[0m")
-fmt.Println("\033[31m[8] ❌ Quitter le jeu\033[0m")
+fmt.Println("\033[32m[4]\033[0m ⚔️  Combat aléatoire")
+fmt.Println("\033[32m[5]\033[0m 📅 Consulter les jours d'indemnisation")
+fmt.Println("\033[32m[6]\033[0m 🏪 Epicerie")
+fmt.Println("\033[32m[7]\033[0m 🏪 Aller à la CAF (Marchand)")
+fmt.Println("\033[35m[8] 🎉 Qui sont les artistes?\033[0m")
+fmt.Println("\033[31m[9] ❌ Quitter le jeu\033[0m")
 fmt.Println("\033[36m══════════════════════════════════════\033[0m")
 
 
@@ -44,14 +45,16 @@ fmt.Println("\033[36m═══════════════════�
 		case "3":
 			LaunchMission(c)
 		case "4":
-			CompDay(c)
+			LaunchCombat(c)
 		case "5":
-			ForgeMenu(c)
+			CompDay(c)
 		case "6":
-			AccesMerchant(c, reader)
+			ForgeMenu(c)
 		case "7":
-			fmt.Println("\nLes artistes sont : \nABBA \n& \nSteven Spielberg") //Mission annexe 6
+			AccesMerchant(c, reader)
 		case "8":
+			fmt.Println("\nLes artistes sont : \nABBA \n& \nSteven Spielberg") //Mission annexe 6
+		case "9":
 			fmt.Println("\nMerci d'avoir joué ! À bientôt 👋")
 			return
 		default:

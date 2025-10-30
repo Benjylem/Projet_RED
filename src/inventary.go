@@ -32,11 +32,12 @@ func AddInventory(c *Character, item string) {
 
 func AddInventoryUpgraded1(c *Character, item string) {
 	item = strings.TrimSpace(item)
-	for c.Inventory = append(c.Inventory, item)
-	return len(c.Inventory) < 8
-
-	if
-	
+	if len(c.Inventory) < 8 {
+		c.Inventory = append(c.Inventory, item)
+		fmt.Printf("\033[32m✅ %q ajouté à votre inventaire !\033[0m\n", item)
+	} else {
+		fmt.Println("\033[31m❌ Inventaire plein ! Vous ne pouvez pas avoir plus de 8 items.\033[0m")
+	}
 }
 func RemoveInventory(c *Character, index int) {
 	if index >= 0 && index < len(c.Inventory) {
@@ -121,16 +122,19 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
 			}
 		case "3":
-			if c.Experience >= 50 {
+			if c.Experience >= 20 {
 				c.Experience -= 20
 				c.CurrentCompDay += 10
 				AddSkill(c, "diplomatie")
 				fmt.Println("\033[32m✅ Vous êtes plus calme !\033[0m")
+			} else {
+				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
+			}
 		case "4":
-			if c.Experience >= 50{
+			if c.Experience >= 50 {
 				c.Experience -= 50
-				UpgradeInventorySlot(c, item)
-			fmt.Println("\033[32m✅ Votre inventaire à augmenté de taille !\033[0m")
+				UpgradeInventorySlot(c)
+				fmt.Println("\033[32m✅ Votre inventaire à augmenté de taille !\033[0m")
 			} else {
 				fmt.Println("\033[31m❌ Pas assez d'XP !\033[0m")
 			}
@@ -141,7 +145,8 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		}
 	}
 }
-func UpgradeInventorySlot(c *Character, item string){
-	AddInventory()
+func UpgradeInventorySlot(c *Character){
+	// Placeholder for inventory upgrade functionality
+	fmt.Println("Inventaire amélioré !")
 }
 
