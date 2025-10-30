@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-    c1 := code.CharacterCreation()
-    code.Menu(&c1)
+	c1 := code.CharacterCreation()
+	code.Menu(&c1)
 }
