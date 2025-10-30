@@ -10,11 +10,11 @@ func CheckMaxItem(c *Character) bool {
 	return len(c.Inventory) < 5
 }
 
-func AddSkill(c *Character, item string){
-	for i, l := range c.Skill{
-		if l==item{
+func AddSkill(c *Character, item string) {
+	for i, l := range c.Skill {
+		if l == item {
 			fmt.Println("\033[31m❌ Choix invalide. Réessayez !\033[0m")
-		} 
+		}
 		i++
 	}
 	c.Skill = append(c.Skill, item)
@@ -145,8 +145,7 @@ func AccesMerchant(c *Character, reader *bufio.Reader) {
 		}
 	}
 }
-func UpgradeInventorySlot(c *Character){
+func UpgradeInventorySlot(c *Character) {
 	// Placeholder for inventory upgrade functionality
 	fmt.Println("Inventaire amélioré !")
 }
-
